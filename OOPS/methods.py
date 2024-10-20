@@ -1,7 +1,7 @@
 """
 1. Regular Methods
 2. Class Methods
-3. Regular Methods
+3. Static Methods
 """
 class Employee:
     num_emp = 0 # Class variable defined
@@ -28,7 +28,12 @@ class Employee:
     def from_string(cls, emp_str):
         first, last, pay, role = emp_str.split('-')
         return cls(first, last, pay, role)
-
+    @staticmethod
+    def is_working(_date):
+        if _date.weekday() == 5 or _date.weekday() == 6:
+            return False
+        return True
+        
 
 emp_0 = Employee("rishabh", "mittal", 600000, "FSD")
 emp_1 = Employee("jivan","Fast", 100000, "Manager")
@@ -59,4 +64,9 @@ emp_3 = Employee.from_string(emp_3_str)
 
 print(emp_3.email)
 
+# Static Method: when you are not usign instance or class anywhere in the method
+# They are included bcz they have some logical connection with Class
 
+import datetime
+_date = datetime.date(2024, 10, 20)
+print(Employee.is_working(_date))
